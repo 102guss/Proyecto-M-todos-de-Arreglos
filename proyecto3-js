@@ -58,37 +58,23 @@ const eliminarProducto = (producto) => {
     }
 };
 
-// Usar some() para verificar si hay al menos un producto en la categoría 'Electrónica'
-const hayElectronica = productos.some(producto => producto.categoria === "Electrónica");
-console.log("¿Hay productos de Electrónica?:", hayElectronica);
-
-// Usar every() para verificar si todos los productos tienen precio mayor a $5
-const todosMayoresA5 = productos.every(producto => producto.precio > 5);
-console.log("¿Todos los productos tienen precio mayor a $5?:", todosMayoresA5);
-
-// Usar includes() para verificar si existe un producto llamado 'Libro'
-const nombres = productos.map(producto => producto.nombre);
-const incluyeLibro = nombres.includes("Libro");
-console.log("¿La lista incluye 'Libro'?:", incluyeLibro);
-
-// Funciones anteriores para gestionar la lista de compras
-const listaDeCompras = [];
-
-const agregarProducto = (producto) => {
-    if (!listaDeCompras.includes(producto)) {
-        listaDeCompras.push(producto);
-        console.log(`${producto} ha sido agregado a la lista.`);
+const mostrarLista = () => {
+    if (listaDeCompras.length === 0) {
+        console.log("La lista de compras está vacía.");
     } else {
-        console.log(`${producto} ya está en la lista.`);
+        console.log("Lista de compras:");
+        listaDeCompras.forEach((producto, index) => {
+            console.log(`${index + 1}. ${producto}`);
+        });
     }
 };
 
-const eliminarProducto = (producto) => {
-    const indice = listaDeCompras.indexOf(producto);
-    if (indice !== -1) {
-        listaDeCompras.splice(indice, 1);
-        console.log(`${producto} ha sido eliminado de la lista.`);
-    } else {
-        console.log(`${producto} no se encuentra en la lista.`);
-    }
-};
+// Ejemplo de uso
+agregarProducto("Manzanas");
+agregarProducto("Leche");
+agregarProducto("Pan");
+agregarProducto("Leche"); // Producto duplicado
+mostrarLista();
+eliminarProducto("Leche");
+mostrarLista();
+eliminarProducto("Carne"); // Producto inexistente
