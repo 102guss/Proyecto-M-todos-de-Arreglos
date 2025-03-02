@@ -22,3 +22,38 @@ console.log("Nombres de los productos:", nombresProductos);
 // Usando el método reduce() para calcular el precio total de los productos baratos
 const precioTotal = productosBaratos.reduce((total, producto) => total + producto.precio, 0);
 console.log("Precio total de los productos baratos:", precioTotal);
+
+// Usar some() para verificar si hay al menos un producto en la categoría 'Electrónica'
+const hayElectronica = productos.some(producto => producto.categoria === "Electrónica");
+console.log("¿Hay productos de Electrónica?:", hayElectronica);
+
+// Usar every() para verificar si todos los productos tienen precio mayor a $5
+const todosMayoresA5 = productos.every(producto => producto.precio > 5);
+console.log("¿Todos los productos tienen precio mayor a $5?:", todosMayoresA5);
+
+// Usar includes() para verificar si existe un producto llamado 'Libro'
+const nombres = productos.map(producto => producto.nombre);
+const incluyeLibro = nombres.includes("Libro");
+console.log("¿La lista incluye 'Libro'?:", incluyeLibro);
+
+// Funciones anteriores para gestionar la lista de compras
+const listaDeCompras = [];
+
+const agregarProducto = (producto) => {
+    if (!listaDeCompras.includes(producto)) {
+        listaDeCompras.push(producto);
+        console.log(`${producto} ha sido agregado a la lista.`);
+    } else {
+        console.log(`${producto} ya está en la lista.`);
+    }
+};
+
+const eliminarProducto = (producto) => {
+    const indice = listaDeCompras.indexOf(producto);
+    if (indice !== -1) {
+        listaDeCompras.splice(indice, 1);
+        console.log(`${producto} ha sido eliminado de la lista.`);
+    } else {
+        console.log(`${producto} no se encuentra en la lista.`);
+    }
+};
