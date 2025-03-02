@@ -1,0 +1,24 @@
+// Arreglo de productos
+const productos = [
+    { nombre: "Camiseta", precio: 15, categoria: "Ropa" },
+    { nombre: "Laptop", precio: 800, categoria: "Electrónica" },
+    { nombre: "Libro", precio: 12, categoria: "Educación" },
+    { nombre: "Zapatos", precio: 50, categoria: "Ropa" },
+    { nombre: "Celular", precio: 600, categoria: "Electrónica" }
+];
+
+// Filtrar productos que cuesten menos de $100
+const productosBaratos = productos.filter(producto => producto.precio < 100);
+console.log("Productos con precio menor a $100:", productosBaratos);
+
+// Ordenar los productos filtrados alfabéticamente por nombre
+const productosOrdenados = productosBaratos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+console.log("Productos ordenados alfabéticamente:", productosOrdenados);
+
+// Generar un arreglo con solo los nombres de los productos
+const nombresProductos = productosOrdenados.map(producto => producto.nombre);
+console.log("Nombres de los productos:", nombresProductos);
+
+// Usando el método reduce() para calcular el precio total de los productos baratos
+const precioTotal = productosBaratos.reduce((total, producto) => total + producto.precio, 0);
+console.log("Precio total de los productos baratos:", precioTotal);
